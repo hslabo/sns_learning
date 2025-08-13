@@ -177,6 +177,7 @@ const quizData = [
 const introScreen = document.getElementById('intro-screen');
 const chatWindow = document.getElementById('chat-window');
 const introNextButton = document.getElementById('intro-next-button');
+const clickGuide = document.getElementById('click-guide'); // ★★★ 新設 ★★★
 
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('quiz-screen');
@@ -206,7 +207,7 @@ let score = 0;
 let currentMessageIndex = 0;
 
 // イベントリスナー
-document.addEventListener('DOMContentLoaded', showNextMessage); // ページ読み込み時に最初のメッセージを表示
+document.addEventListener('DOMContentLoaded', showNextMessage);
 chatWindow.addEventListener('click', showNextMessage);
 introNextButton.addEventListener('click', () => {
     introScreen.classList.add('hidden');
@@ -221,8 +222,15 @@ nextButton.addEventListener('click', nextQuestion);
 
 // イントロ会話を表示する関数
 function showNextMessage() {
+    // ★★★ ここから変更 ★★★
+    // 最初のクリックで案内を隠す
+    if (!clickGuide.classList.contains('hidden')) {
+        clickGuide.classList.add('hidden');
+    }
+    // ★★★ ここまで変更 ★★★
+
     if (currentMessageIndex >= conversationData.length) {
-        chatWindow.removeEventListener('click', showNextMessage); // 会話終了後はクリックイベントを削除
+        chatWindow.removeEventListener('click', showNextMessage);
         introNextButton.classList.remove('hidden');
         return;
     }
@@ -230,7 +238,6 @@ function showNextMessage() {
     const message = conversationData[currentMessageIndex];
     let messageHtml = '';
 
-    // ★★★ ここから変更 ★★★
     if (message.character === 'riina') {
         messageHtml = `
             <div class="chat-message riina">
@@ -252,14 +259,12 @@ function showNextMessage() {
             </div>
         `;
     }
-    // ★★★ ここまで変更 ★★★
 
     chatWindow.insertAdjacentHTML('beforeend', messageHtml);
-    chatWindow.scrollTop = chatWindow.scrollHeight; // 自動で一番下までスクロール
+    chatWindow.scrollTop = chatWindow.scrollHeight;
 
     currentMessageIndex++;
 }
-
 
 // 名前の設定
 function setUserName() {
@@ -295,6 +300,7 @@ function restartGame() {
     showNextMessage();
     chatWindow.addEventListener('click', showNextMessage);
     introNextButton.classList.add('hidden');
+    clickGuide.classList.remove('hidden'); // ★★★ 案内を再表示 ★★★
     
     // 名前入力画面の状態もリセット
     nameEntrySection.classList.remove('hidden');
@@ -332,11 +338,11 @@ function selectOption(selectedIndex) {
     if (isCorrect) {
         score++;
         resultTitle.textContent = "そうですね！";
-        resultSatokoImage.src = "smile_satoko.png"; // 正解のイラスト
+        resultSatokoImage.src = "smile_satoko.png";
         resultSatokoImage.alt = "さとこさん（笑顔）";
     } else {
         resultTitle.textContent = "あらら…";
-        resultSatokoImage.src = "shock_satoko.png"; // 不正解のイラスト
+        resultSatokoImage.src = "shock_satoko.png";
         resultSatokoImage.alt = "さとこさん（不安）";
     }
     
