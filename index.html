@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さとこさんと始める、あんしんSNS散歩</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="game-container">
+
+        <!-- ★★★ ここから新設 ★★★ -->
+        <!-- イントロ会話画面 -->
+        <div id="intro-screen" class="screen">
+            <div id="chat-window">
+                <!-- 会話はJavaScriptで生成されます -->
+            </div>
+            <button id="intro-next-button" class="btn hidden">クイズの練習を始める</button>
+        </div>
+        <!-- ★★★ ここまで新設 ★★★ -->
+
+
+        <!-- 開始画面 (最初は非表示) -->
+        <div id="start-screen" class="screen hidden">
+            <h1>さとこさんと始める、あんしんSNS散歩</h1>
+
+            <!-- 名前入力部分 -->
+            <div id="name-entry-section">
+                <p>まず、あなたのお名前（ニックネーム）を教えてください。</p>
+                <input type="text" id="name-input" placeholder="例：さくら" aria-label="お名前（ニックネーム）">
+                <button id="name-submit-button" class="btn">決定</button>
+            </div>
+
+            <!-- 挨拶と開始ボタン部分（最初は非表示） -->
+            <div id="welcome-section" class="hidden">
+                <img src="smile_satoko.png" alt="さとこさん（笑顔）" class="satoko-image">
+                <p class="message-box satoko-speech">
+                    こんにちは、<span id="user-name-display"></span>さん。さとこです。この間、娘に勧められて『SNS』を始めたんですけど、これが結構面白いんです。もしよかったら、一緒に練習してみませんか？最初は誰でも初心者ですから、安心してくださいね。
+                </p>
+                <button id="start-button" class="btn">散歩を始める</button>
+            </div>
+        </div>
+
+
+        <!-- クイズ画面 -->
+        <div id="quiz-screen" class="screen hidden">
+            <div id="progress-bar"></div>
+            <p id="question-number"></p>
+            <img src="thinking_satoko.png" alt="さとこさん（考え中）" class="satoko-image">
+            <p id="question-text" class="message-box satoko-speech"></p>
+            <div id="options-container">
+                <!-- 選択肢はJavaScriptで生成されます -->
+            </div>
+        </div>
+
+        <!-- 最終結果画面 -->
+        <div id="final-screen" class="screen hidden">
+            <img src="smile_satoko.png" alt="さとこさん（笑顔）" class="satoko-image">
+            <h2 id="final-rank"></h2>
+            <p id="final-score"></p>
+            <p id="final-message" class="message-box satoko-speech"></p>
+            <button id="restart-button" class="btn">もう一度挑戦する</button>
+        </div>
+
+    </div>
+
+    <!-- 結果表示モーダル -->
+    <div id="result-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <img id="result-satoko-image" src="" alt="さとこさん" class="satoko-image">
+            <h3 id="result-title"></h3>
+            <div id="result-story" class="story-box">
+                <!-- ストーリーはJavaScriptで生成されます -->
+            </div>
+            <p id="result-explanation" class="message-box satoko-speech"></p>
+            <button id="next-button" class="btn">次へ進む</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
