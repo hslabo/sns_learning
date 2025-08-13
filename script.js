@@ -177,7 +177,7 @@ const quizData = [
 const introScreen = document.getElementById('intro-screen');
 const chatWindow = document.getElementById('chat-window');
 const introNextButton = document.getElementById('intro-next-button');
-const clickGuide = document.getElementById('click-guide'); // ★★★ 新設 ★★★
+const clickGuide = document.getElementById('click-guide');
 
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('quiz-screen');
@@ -222,12 +222,10 @@ nextButton.addEventListener('click', nextQuestion);
 
 // イントロ会話を表示する関数
 function showNextMessage() {
-    // ★★★ ここから変更 ★★★
-    // 最初のクリックで案内を隠す
-    if (!clickGuide.classList.contains('hidden')) {
+    // 2番目のメッセージが表示されるタイミングで、案内を隠す
+    if (currentMessageIndex === 1 && !clickGuide.classList.contains('hidden')) {
         clickGuide.classList.add('hidden');
     }
-    // ★★★ ここまで変更 ★★★
 
     if (currentMessageIndex >= conversationData.length) {
         chatWindow.removeEventListener('click', showNextMessage);
@@ -266,6 +264,7 @@ function showNextMessage() {
     currentMessageIndex++;
 }
 
+
 // 名前の設定
 function setUserName() {
     const userName = nameInput.value.trim();
@@ -300,7 +299,7 @@ function restartGame() {
     showNextMessage();
     chatWindow.addEventListener('click', showNextMessage);
     introNextButton.classList.add('hidden');
-    clickGuide.classList.remove('hidden'); // ★★★ 案内を再表示 ★★★
+    clickGuide.classList.remove('hidden');
     
     // 名前入力画面の状態もリセット
     nameEntrySection.classList.remove('hidden');

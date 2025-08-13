@@ -4,7 +4,7 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; を削除 */
     min-height: 100vh;
     margin: 0;
     padding: 20px;
@@ -13,6 +13,7 @@ body {
 
 #game-container {
     background-color: #fff;
+    margin: 5vh auto; /* 上下に余白、左右は自動で中央寄せ */
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     padding: 30px;
@@ -58,6 +59,8 @@ body {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    -webkit-tap-highlight-color: transparent; /* タップ時のハイライトを透明に */
+    user-select: none; /* テキストの選択を無効に */
 }
 
 .chat-message {
@@ -135,7 +138,6 @@ body {
     max-width: 80%;
 }
 
-/* ★★★ ここから新設 ★★★ */
 #click-guide {
     position: absolute;
     bottom: 90px; /* ボタンの上あたり */
@@ -169,7 +171,6 @@ body {
         opacity: 1;
     }
 }
-/* ★★★ ここまで新設 ★★★ */
 
 
 #name-entry-section {
