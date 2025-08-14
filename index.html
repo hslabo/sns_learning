@@ -15,14 +15,10 @@
             <div id="chat-window">
                 <!-- 会話はJavaScriptで生成されます -->
             </div>
-
-            <!-- ★★★ ここから新設 ★★★ -->
             <div id="click-guide">
                 <div class="pulse-circle"></div>
                 <span>画面をタップして進む</span>
             </div>
-            <!-- ★★★ ここまで新設 ★★★ -->
-
             <button id="intro-next-button" class="btn hidden">クイズの練習を始める</button>
         </div>
 
@@ -30,15 +26,11 @@
         <!-- 開始画面 (最初は非表示) -->
         <div id="start-screen" class="screen hidden">
             <h1>さとこさんと始める、あんしんSNS散歩</h1>
-
-            <!-- 名前入力部分 -->
             <div id="name-entry-section">
                 <p>まず、あなたのお名前（ニックネーム）を教えてください。</p>
                 <input type="text" id="name-input" placeholder="例：さくら" aria-label="お名前（ニックネーム）">
                 <button id="name-submit-button" class="btn">決定</button>
             </div>
-
-            <!-- 挨拶と開始ボタン部分（最初は非表示） -->
             <div id="welcome-section" class="hidden">
                 <img src="smile_satoko.png" alt="さとこさん（笑顔）" class="satoko-image">
                 <p class="message-box satoko-speech">
@@ -55,9 +47,13 @@
             <p id="question-number"></p>
             <img src="thinking_satoko.png" alt="さとこさん（考え中）" class="satoko-image">
             <p id="question-text" class="message-box satoko-speech"></p>
-            <div id="options-container">
-                <!-- 選択肢はJavaScriptで生成されます -->
+            <!-- ★★★ ここを修正 ★★★ -->
+            <div id="options-wrapper">
+                <div id="options-container">
+                    <!-- 選択肢はJavaScriptで生成されます -->
+                </div>
             </div>
+            <!-- ★★★ ここまで修正 ★★★ -->
         </div>
 
         <!-- 最終結果画面 -->
